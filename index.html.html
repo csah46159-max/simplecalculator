@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 500px;
+            background: #222;
+            color: white;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: gold;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        label {
+            color: gold;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid gold;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: gold;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: orange;
+            transform: scale(1.02);
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            color: lime;
+        }
+    </style>
+
+    <script>
+        function Calculate() {
+
+            const num1 = Number(document.getElementById("tbNum1").value);
+            const num2 = Number(document.getElementById("tbNum2").value);
+            const operator = document.getElementById("dlOperator").value;
+
+            const resultElement = document.getElementById("result");
+
+            // Validate input
+            if (isNaN(num1) || isNaN(num2)) {
+                resultElement.innerHTML = "<span style='color:red;'>Please enter valid numbers.</span>";
+                return;
+            }
+
+            let result;
+
+            switch (operator) {
+
+                case "+":
+                    result = num1 + num2;
+                    break;
+
+                case "-":
+                    result = num1 - num2;
+                    break;
+
+                case "*":
+                    result = num1 * num2;
+                    break;
+
+                case "/":
+                    if (num2 === 0) {
+                        resultElement.innerHTML = "<span style='color:red;'>Cannot divide by zero.</span>";
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+
+                default:
+                    resultElement.innerHTML = "Invalid Operator";
+                    return;
+            }
+
+            resultElement.innerHTML = result;
+        }
+    </script>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>Simple Calculator</h2>
+
+        <table>
+
+            <tr>
+                <td>
+                    <label>First Number</label>
+                </td>
+
+                <td>
+                    <input type="number" id="tbNum1" placeholder="Enter first number">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Second Number</label>
+                </td>
+
+                <td>
+                    <input type="number" id="tbNum2" placeholder="Enter second number">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Operator</label>
+                </td>
+
+                <td>
+                    <select id="dlOperator">
+                        <option value="+">Addition (+)</option>
+                        <option value="-">Subtraction (-)</option>
+                        <option value="*">Multiplication (*)</option>
+                        <option value="/">Division (/)</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Result</label>
+                </td>
+
+                <td>
+                    <span id="result">0</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button onclick="Calculate()">Calculate</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</body>
+</html>
