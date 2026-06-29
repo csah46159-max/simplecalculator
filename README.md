@@ -1,3 +1,4 @@
+[simple claculator.html](https://github.com/user-attachments/files/29474690/simple.claculator.html)
 # Simple Calculator
 
 A simple web-based calculator built using HTML, CSS, and JavaScript.
@@ -30,5 +31,9 @@ A simple web-based calculator built using HTML, CSS, and JavaScript.
 - Responsive design
 
 ## Author
-
 Laxmi Sah
+
+
+
+
+
